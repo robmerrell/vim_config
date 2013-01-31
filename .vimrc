@@ -7,6 +7,7 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'molokai'
+Bundle 'vim-scripts/Liquid-Carbon'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
@@ -40,10 +41,18 @@ syntax on
 set vb
 set guifont=Monaco:h12
 set t_Co=256
+set bg=dark
 set number
-colorscheme molokai
 set guioptions-=T
 set nowrap
+
+" colorscheme
+if has('gui_running')
+  colorscheme liquidcarbon
+  let g:liquidcarbon_high_contrast=1
+else
+  colorscheme molokai
+endif
 
 " Declutter the tab label
 set guitablabel=%t
