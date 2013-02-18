@@ -6,9 +6,13 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
+
+" color schemes
 Bundle 'molokai'
 Bundle 'vim-scripts/Liquid-Carbon'
-Bundle 'kchmck/vim-coffee-script'
+Bundle 'chriskempson/vim-tomorrow-theme'
+
+" utils
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'kien/ctrlp.vim'
@@ -16,15 +20,21 @@ Bundle 'ervandew/supertab'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
+
+" languages
+Bundle 'kchmck/vim-coffee-script'
 Bundle 'guns/vim-clojure-static'
 Bundle 'tpope/vim-foreplay'
 
 " snipmate
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "honza/snipmate-snippets"
-Bundle "garbas/vim-snipmate"
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'honza/snipmate-snippets'
+Bundle 'garbas/vim-snipmate'
 
+" markdown
+Bundle 'tpope/vim-markdown'
+Bundle 'jtratner/vim-flavored-markdown'
 
 filetype plugin indent on
 
@@ -117,6 +127,10 @@ set expandtab
 set backspace=start,indent
 
 
+""""" Showing evil trailing whitespace """"""
+:highlight ExtraWhitespace ctermbg=red guibg=red
+:match ExtraWhitespace /\s\+$/
+
 
 """"" Search """"
 " Clear the search by pressing enter
@@ -127,5 +141,11 @@ nnoremap <silent> <expr> <CR> ClearHighlight()
 
 " Switch on search pattern highlighting.
 set hlsearch
+
+" use flavored markdown
+augroup markdown
+    au!
+    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+augroup END
 
 
