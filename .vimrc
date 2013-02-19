@@ -11,6 +11,7 @@ Bundle 'gmarik/vundle'
 Bundle 'molokai'
 Bundle 'vim-scripts/Liquid-Carbon'
 Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'nanotech/jellybeans.vim'
 
 " utils
 Bundle 'scrooloose/nerdtree'
@@ -61,7 +62,7 @@ if has('gui_running')
   colorscheme liquidcarbon
   let g:liquidcarbon_high_contrast=1
 else
-  colorscheme molokai
+  colorscheme jellybeans
 endif
 
 " Declutter the tab label
@@ -128,8 +129,8 @@ set backspace=start,indent
 
 
 """"" Showing evil trailing whitespace """"""
-:highlight ExtraWhitespace ctermbg=red guibg=red
-:match ExtraWhitespace /\s\+$/
+":highlight ExtraWhitespace ctermbg=red guibg=red
+":match ExtraWhitespace /\s\+$/
 
 
 """"" Search """"
