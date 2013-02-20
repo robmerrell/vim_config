@@ -149,4 +149,6 @@ augroup markdown
     au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 augroup END
 
+" json
+autocmd BufNewFile,BufRead *.json set filetype=javascript
 
