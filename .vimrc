@@ -26,6 +26,9 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'guns/vim-clojure-static'
 Bundle 'tpope/vim-foreplay'
+Bundle 'jnwhiteh/vim-golang'
+Bundle 'golangtw/gocode.vim'
+Bundle 'lunaru/vim-less'
 
 " snipmate
 Bundle 'MarcWeber/vim-addon-mw-utils'
@@ -59,8 +62,7 @@ set nowrap
 
 " colorscheme
 if has('gui_running')
-  colorscheme liquidcarbon
-  let g:liquidcarbon_high_contrast=1
+  colorscheme desert
 else
   colorscheme jellybeans
 endif
@@ -75,7 +77,7 @@ let c_comment_strings=1
 :set laststatus=2
 
 " highlight the current line
-:set cursorline
+":set cursorline
 
 
 """""" Movement """""
@@ -118,6 +120,14 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=237
 " ignore pattern for ctrlp
 let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules)$'
 
+" let supertab handle omnicomplete
+let g:SuperTabDefaultCompletionType = 'context'
+
+" run :Fmt for go files on save
+autocmd BufWritePre *.go Fmt
+
+" Clear control-p caches
+command Clearp CtrlPClearAllCaches 
 
 """"" Tabs """"""
 set tabstop=2
@@ -126,11 +136,6 @@ set smarttab
 set autoindent
 set expandtab
 set backspace=start,indent
-
-
-""""" Showing evil trailing whitespace """"""
-":highlight ExtraWhitespace ctermbg=red guibg=red
-":match ExtraWhitespace /\s\+$/
 
 
 """"" Search """"
