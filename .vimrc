@@ -9,32 +9,36 @@ Bundle 'gmarik/vundle'
 
 " color schemes
 Bundle 'molokai'
-Bundle 'vim-scripts/Liquid-Carbon'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'nanotech/jellybeans.vim'
+Bundle 'cschlueter/vim-wombat'
+Bundle 'gregsexton/Muon'
 
 " utils
+Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'kien/ctrlp.vim'
 Bundle 'ervandew/supertab'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'vim-scripts/paredit.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'bling/vim-airline'
+Bundle 'tpope/vim-surround'
+Bundle 'rking/ag.vim'
+Bundle 'samsonw/vim-task'
+Bundle 'jceb/vim-orgmode'
+Bundle 'terryma/vim-expand-region'
 
 " languages
+Bundle 'elixir-lang/vim-elixir'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'guns/vim-clojure-static'
-Bundle 'tpope/vim-foreplay'
 Bundle 'jnwhiteh/vim-golang'
-Bundle 'golangtw/gocode.vim'
+Bundle 'Blackrush/vim-gocode'
+Bundle 'dgryski/vim-godef'
 Bundle 'lunaru/vim-less'
-
-" snipmate
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'honza/snipmate-snippets'
-Bundle 'garbas/vim-snipmate'
+Bundle 'othree/html5-syntax.vim'
 
 " markdown
 Bundle 'tpope/vim-markdown'
@@ -44,10 +48,9 @@ filetype plugin indent on
 
 
 """""" System """""
-set ch=2		" Make command line two lines high
+set ch=1		" Make command line two lines high
 set mousehide		" Hide the mouse when typing text
 let mapleader = ","
-
 
 
 """"""" Window """""""
@@ -60,12 +63,7 @@ set number
 set guioptions-=T
 set nowrap
 
-" colorscheme
-if has('gui_running')
-  colorscheme desert
-else
-  colorscheme jellybeans
-endif
+colorscheme Muon
 
 " Declutter the tab label
 set guitablabel=%t
@@ -81,13 +79,6 @@ let c_comment_strings=1
 
 
 """""" Movement """""
-" Tab key bindings
-:map <S-h> gT 
-:map <S-l> gt
-:nmap <S-j> :tabfirst<CR>
-:nmap <S-k> :tablast<CR>
-map <leader>n :tabnew<CR>
-
 " Window key bindings
 :nmap <C-h> :wincmd h<CR>
 :nmap <C-l> :wincmd l<CR>
@@ -119,15 +110,14 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=237
 
 " ignore pattern for ctrlp
 let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules)$'
+:nmap <C-o> :CtrlPBuffer<CR>
 
 " let supertab handle omnicomplete
 let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabClosePreviewOnPopupClose = 1
 
-" run :Fmt for go files on save
-autocmd BufWritePre *.go Fmt
-
-" Clear control-p caches
-command Clearp CtrlPClearAllCaches 
+" airline theme
+let g:airline_theme='bubblegum'
 
 """"" Tabs """"""
 set tabstop=2
@@ -156,4 +146,20 @@ augroup END
 
 " json
 autocmd BufNewFile,BufRead *.json set filetype=javascript
+
+" golang
+autocmd BufWritePre *.go Fmt "run :Fmt for go files on save
+autocmd Filetype go setlocal ts=4 sw=4 noexpandtab
+let g:godef_same_file_in_same_window=1
+let g:godef_split=0
+
+" python
+autocmd Filetype python setlocal ts=4 sw=4 expandtab
+
+" vim-tasks
+autocmd BufNewFile,BufRead *.tasks  setfiletype task
+:nmap <leader>a :call Toggle_task_status()<CR>
+
+" test runner
+:nmap <leader>t :! mix test<CR>
 
