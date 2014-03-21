@@ -31,7 +31,7 @@ Bundle 'samsonw/vim-task'
 Bundle 'jceb/vim-orgmode'
 Bundle 'terryma/vim-expand-region'
 
-" languages
+" languages and frameworks
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'jnwhiteh/vim-golang'
@@ -39,6 +39,7 @@ Bundle 'Blackrush/vim-gocode'
 Bundle 'dgryski/vim-godef'
 Bundle 'lunaru/vim-less'
 Bundle 'othree/html5-syntax.vim'
+Bundle 'tpope/vim-rails'
 
 " markdown
 Bundle 'tpope/vim-markdown'
@@ -110,7 +111,8 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=237
 
 " ignore pattern for ctrlp
 let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules)$'
-:nmap <C-o> :CtrlPBuffer<CR>
+:nmap <C-b> :CtrlPBuffer<CR>
+:nmap <C-o> :CtrlPMRUFiles<CR>
 
 " let supertab handle omnicomplete
 let g:SuperTabDefaultCompletionType = 'context'
