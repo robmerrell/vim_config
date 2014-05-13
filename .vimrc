@@ -16,7 +16,6 @@ Bundle 'gregsexton/Muon'
 
 " utils
 Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'kien/ctrlp.vim'
 Bundle 'ervandew/supertab'
@@ -38,6 +37,9 @@ Bundle 'jnwhiteh/vim-golang'
 Bundle 'Blackrush/vim-gocode'
 Bundle 'dgryski/vim-godef'
 Bundle 'lunaru/vim-less'
+Bundle 'slim-template/vim-slim.git'
+Bundle 'JulesWang/css.vim'
+Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'othree/html5-syntax.vim'
 Bundle 'tpope/vim-rails'
 
@@ -52,6 +54,7 @@ filetype plugin indent on
 set ch=1		" Make command line two lines high
 set mousehide		" Hide the mouse when typing text
 let mapleader = ","
+let g:netrw_list_hide= '.*\.swp$,\~$,\.orig$'
 
 
 """"""" Window """""""
@@ -64,7 +67,7 @@ set number
 set guioptions-=T
 set nowrap
 
-colorscheme Muon
+colorscheme muon
 
 " Declutter the tab label
 set guitablabel=%t
@@ -92,9 +95,8 @@ map <leader>l :vertical resize +5<CR>
 map <leader>j :resize +5<CR>
 map <leader>k :resize -5<CR>
 
-
-"""""" Plugins """""
-:nmap <leader>m :NERDTreeToggle<CR>
+"""""" Native """""""
+:nmap <leader>e :Explore<CR>
 
 " Rainbow parens
 au VimEnter * RainbowParenthesesToggle
@@ -111,7 +113,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=237
 
 " ignore pattern for ctrlp
 let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules)$'
-:nmap <C-b> :CtrlPBuffer<CR>
+:nmap <C-i> :CtrlPBuffer<CR>
 :nmap <C-o> :CtrlPMRUFiles<CR>
 
 " let supertab handle omnicomplete
