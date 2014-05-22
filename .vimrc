@@ -2,50 +2,50 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " color schemes
-Bundle 'molokai'
-Bundle 'chriskempson/vim-tomorrow-theme'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'cschlueter/vim-wombat'
-Bundle 'gregsexton/Muon'
+Plugin 'molokai'
+Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'cschlueter/vim-wombat'
+Plugin 'gregsexton/Muon'
 
 " utils
-Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'kien/ctrlp.vim'
-Bundle 'ervandew/supertab'
-Bundle 'chrisbra/NrrwRgn'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'vim-scripts/paredit.vim'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'bling/vim-airline'
-Bundle 'tpope/vim-surround'
-Bundle 'rking/ag.vim'
-Bundle 'samsonw/vim-task'
-Bundle 'jceb/vim-orgmode'
-Bundle 'terryma/vim-expand-region'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'kien/ctrlp.vim'
+Plugin 'ervandew/supertab'
+Plugin 'chrisbra/NrrwRgn'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-surround'
+Plugin 'rking/ag.vim'
+Plugin 'samsonw/vim-task'
+Plugin 'jceb/vim-orgmode'
+Plugin 'terryma/vim-expand-region'
 
 " languages and frameworks
-Bundle 'elixir-lang/vim-elixir'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'Blackrush/vim-gocode'
-Bundle 'dgryski/vim-godef'
-Bundle 'lunaru/vim-less'
-Bundle 'slim-template/vim-slim.git'
-Bundle 'JulesWang/css.vim'
-Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'othree/html5-syntax.vim'
-Bundle 'tpope/vim-rails'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'jnwhiteh/vim-golang'
+Plugin 'Blackrush/vim-gocode'
+Plugin 'dgryski/vim-godef'
+Plugin 'lunaru/vim-less'
+Plugin 'slim-template/vim-slim.git'
+Plugin 'JulesWang/css.vim'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'othree/html5-syntax.vim'
+Plugin 'tpope/vim-rails'
 
 " markdown
-Bundle 'tpope/vim-markdown'
-Bundle 'jtratner/vim-flavored-markdown'
+Plugin 'tpope/vim-markdown'
+Plugin 'jtratner/vim-flavored-markdown'
+
+call vundle#end()
 
 filetype plugin indent on
 
@@ -97,12 +97,6 @@ map <leader>k :resize -5<CR>
 
 """""" Native """""""
 :nmap <leader>e :Explore<CR>
-
-" Rainbow parens
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
 
 " indent guides
 let g:indent_guides_auto_colors = 0
