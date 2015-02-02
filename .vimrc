@@ -7,12 +7,7 @@ call vundle#begin()
 
 Plugin 'gmarik/vundle'
 
-" color schemes
-Plugin 'molokai'
-Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'nanotech/jellybeans.vim'
-Plugin 'cschlueter/vim-wombat'
-Plugin 'gregsexton/Muon'
 
 " utils
 Plugin 'tpope/vim-fugitive'
@@ -24,20 +19,14 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-surround'
 Plugin 'rking/ag.vim'
-Plugin 'samsonw/vim-task'
-Plugin 'jceb/vim-orgmode'
 Plugin 'terryma/vim-expand-region'
+Plugin 'bronson/vim-trailing-whitespace'
 
 " languages and frameworks
+Plugin 'vim-ruby/vim-ruby'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'jnwhiteh/vim-golang'
-Plugin 'Blackrush/vim-gocode'
-Plugin 'dgryski/vim-godef'
-Plugin 'lunaru/vim-less'
-Plugin 'slim-template/vim-slim.git'
 Plugin 'JulesWang/css.vim'
-Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'othree/html5-syntax.vim'
 Plugin 'tpope/vim-rails'
 
@@ -67,7 +56,7 @@ set number
 set guioptions-=T
 set nowrap
 
-colorscheme muon
+colorscheme jellybeans
 
 " Declutter the tab label
 set guitablabel=%t
@@ -107,15 +96,14 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=237
 
 " ignore pattern for ctrlp
 let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules)$'
-:nmap <C-i> :CtrlPBuffer<CR>
-:nmap <C-o> :CtrlPMRUFiles<CR>
+:nmap <C-o> :CtrlPBuffer<CR>
 
 " let supertab handle omnicomplete
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabClosePreviewOnPopupClose = 1
 
 " airline theme
-let g:airline_theme='bubblegum'
+let g:airline_theme='murmur'
 
 """"" Tabs """"""
 set tabstop=2
@@ -145,19 +133,6 @@ augroup END
 " json
 autocmd BufNewFile,BufRead *.json set filetype=javascript
 
-" golang
-autocmd BufWritePre *.go Fmt "run :Fmt for go files on save
-autocmd Filetype go setlocal ts=4 sw=4 noexpandtab
-let g:godef_same_file_in_same_window=1
-let g:godef_split=0
-
-" python
-autocmd Filetype python setlocal ts=4 sw=4 expandtab
-
-" vim-tasks
-autocmd BufNewFile,BufRead *.tasks  setfiletype task
-:nmap <leader>a :call Toggle_task_status()<CR>
-
-" test runner
-:nmap <leader>t :! mix test<CR>
+" fugitive
+au FileType gitcommit nmap <buffer> U :Git checkout -- <c-r><c-g><cr>
 
